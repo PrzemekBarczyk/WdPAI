@@ -1,3 +1,7 @@
+html {
+    overflow-x: hidden;
+}
+
 body {
     margin: 0;
     background: transparent linear-gradient(180deg, #59D634 0%, #2D6B1A 100%) 0% 0% no-repeat padding-box;
@@ -14,10 +18,7 @@ body {
 
 #logo-container {
     width: 40vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: top;
-    align-items: center;
+    text-align: center;
 }
 
 #login-logo {
@@ -27,61 +28,40 @@ body {
 }
 
 #register-logo {
-    max-width: 70%;
+    max-width: 60%;
     margin-top: 4vh;
     margin-bottom: 4vh;
 }
 
 #form {
 	width: 40vw;
-    display: flex;
-	flex-direction: column;
-    justify-content: top;
-    align-items: center;
 	background: rgba(255, 255, 255, 0.4);
     border-radius: 26px;
 }
 
 #form-content {
-    width: 35vw;
-    margin: auto;
+    width: 34vw;
+    margin: 0 3vw;
     display: flex;
 	flex-direction: column;
-    justify-content: top;
-    align-items: center;
+    justify-content: center;
+    align-items: start;
 }
 
-#form-header-container {
-    width: 35vw;
+#form-title-container {
+    width: inherit;
     text-align: center;
 }
 
-h4 {
+#form-title {
+    margin: 0;
 	padding: 3vh;
     font: normal normal bold 25px/29px Arial;
     letter-spacing: 0px;
     color: #D47C18;
-    margin: auto;
 }
 
-#input-container {
-    width: 35vw;
-	display: flex;
-	flex-direction: column;
-    justify-content: top;
-    align-items: center;
-}
-
-.form-field-with-header {
-    width: 35vw;
-	display: flex;
-	flex-direction: column;
-    justify-content: top;
-    align-items: left;
-    text-align: left;
-}
-
-h5 {
+.field-title {
     margin: 0;
     font: normal normal bold 20px/23px Arial;
     letter-spacing: 0px;
@@ -89,26 +69,26 @@ h5 {
 }
 
 .form-field {
-    width: 35vw;
-	display: flex;
-	flex-direction: row;
-    justify-content: center;
-    align-items: left;
+    width: inherit;
     margin-bottom: 5vh;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border: 1px solid #707070;
+    display: flex;
+	flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
-i {
-    width: 3vw;
+.form-field i {
+    width: 4vw;
     height: 5vh;
-    font-size: 4vh;
     margin-top: 1vh;
+    font-size: 4vh;
     text-align: center;
 }
 
 .input-field {
-	width: 32vw;
+	width: 30vw;
     height: 5vh;
     text-align: left;
     font: normal normal normal 20px/27px Segoe UI;
@@ -118,27 +98,26 @@ i {
 }
 
 .buttons-container {
-	width: 35vw;
+	width: inherit;
 	margin-bottom: 5vh;
 }
 
 .left-button {
-    border: 1px solid #FFFFFF;
-    background: none;
+    float: left;
     height: 5vh;
-	float: left;
-	
+    padding: 0 1vw;
+    background: none;
+    border: 1px solid #FFFFFF;
     color: #D47C18;
     text-align: center;
     font: normal normal normal 20px/27px Segoe UI
 }
 
 .right-button {
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    border: 1px solid #707070;
+    float: right;
     height: 5vh;
-	float: right;
-	
+    padding: 0 1vw;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
     border: none;
     color: #D47C18;
     text-align: center;
@@ -150,6 +129,10 @@ i {
 }
 
 @media only screen and (max-device-width: 420px) {
+    #logo-container, #form {
+        width: 90vw;
+    }
+
     #login-logo {
         margin-top: 15vh;
         margin-bottom: 15vh;
@@ -160,23 +143,20 @@ i {
         margin-bottom: 6vh;
     }
 
-    #logo-container, #form {
-        width: 90vw;
-    }
-
-    #form-content, #form-header-container, #input-container, .form-field-with-header, .form-field, .buttons-container {
+    #form-content {
         width: 70vw;
+        margin: 0 10vw;
     }
 
-    h4 {
+    #form-title {
         font: normal normal bold 65px Arial;
     }
 
-    h5 {
+    .field-title {
         font: normal normal bold 50px Arial;
     }
 
-    .icon {
+    .form-field i {
         width: 10vw;
     }
 
@@ -186,6 +166,7 @@ i {
     }
 
     .left-button, .right-button {
+        padding: 0 2vw;
         font: normal normal normal 50px Segoe UI;
     }
 }
