@@ -1,0 +1,176 @@
+html {
+    overflow-x: hidden;
+}
+
+body {
+    margin: 0;
+    background: transparent linear-gradient(180deg, #59D634 0%, #2D6B1A 100%) 0% 0% no-repeat padding-box;
+}
+
+#container {
+    width: 100vw;
+    height: 100vh;
+	display: flex;
+	flex-direction: column;
+    justify-content: top;
+    align-items: center;
+}
+
+#logo-container {
+    width: 40vw;
+    text-align: center;
+}
+
+#login-logo {
+    max-width: 70%;
+    margin-top: 7vh;
+    margin-bottom: 7vh;
+}
+
+#register-logo {
+    max-width: 60%;
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+}
+
+#form {
+	width: 40vw;
+	background: rgba(255, 255, 255, 0.4);
+    border-radius: 26px;
+}
+
+#form-content {
+    width: 34vw;
+    margin: 0 3vw;
+    display: flex;
+	flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+
+#form-title-container {
+    width: inherit;
+    text-align: center;
+}
+
+#form-title {
+    margin: 0;
+	padding: 3vh;
+    font: normal normal bold 25px/29px Arial;
+    letter-spacing: 0px;
+    color: #D47C18;
+}
+
+.field-title {
+    margin: 0;
+    font: normal normal bold 20px/23px Arial;
+    letter-spacing: 0px;
+    color: #D47C18;
+}
+
+.form-field {
+    width: inherit;
+    margin-bottom: 5vh;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #707070;
+    display: flex;
+	flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-field i {
+    width: 4vw;
+    height: 5vh;
+    margin-top: 1vh;
+    font-size: 4vh;
+    text-align: center;
+}
+
+.input-field {
+	width: 30vw;
+    height: 5vh;
+    text-align: left;
+    font: normal normal normal 20px/27px Segoe UI;
+    border: none;
+    letter-spacing: 0px;
+    color: #707070;
+}
+
+.input-field:focus {
+    outline: none;
+}
+
+.buttons-container {
+	width: inherit;
+	margin-bottom: 5vh;
+}
+
+.left-button {
+    float: left;
+    height: 5vh;
+    padding: 0 1vw;
+    background: none;
+    border: 1px solid #FFFFFF;
+    color: #D47C18;
+    text-align: center;
+    font: normal normal normal 20px/27px Segoe UI
+}
+
+.right-button {
+    float: right;
+    height: 5vh;
+    padding: 0 1vw;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: none;
+    color: #D47C18;
+    text-align: center;
+    font: normal normal normal 20px/27px Segoe UI
+}
+
+.left-button:hover, .right-button:hover {
+    background: #EEEEEE 0% 0% no-repeat padding-box;
+}
+
+@media only screen and (max-device-width: 420px) {
+    #logo-container, #form {
+        width: 90vw;
+    }
+
+    #login-logo {
+        margin-top: 15vh;
+        margin-bottom: 15vh;
+    }
+
+    #register-logo {
+        margin-top: 10vh;
+        margin-bottom: 6vh;
+    }
+
+    #form-content {
+        width: 70vw;
+        margin: 0 10vw;
+    }
+
+    #form-title {
+        font: normal normal bold 65px Arial;
+    }
+
+    .field-title {
+        font: normal normal bold 50px Arial;
+    }
+
+    .form-field i {
+        width: 10vw;
+    }
+
+    .input-field {
+        width: 60vw;
+        font: normal normal normal 50px Segoe UI;
+    }
+
+    .left-button, .right-button {
+        padding: 0 2vw;
+        font: normal normal normal 50px Segoe UI;
+    }
+}

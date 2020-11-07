@@ -1,0 +1,134 @@
+html {
+    overflow-x: hidden;
+}
+
+body {
+    margin: 0;
+    background: #DDE7DA 0% 0% no-repeat padding-box;
+}
+
+#container {
+    width: 100vw;
+    height: 100vh;
+	display: flex;
+	flex-direction: column;
+    justify-content: top;
+    align-items: center;
+}
+
+#header {
+    width: inherit;
+    height: 70px;
+    margin-bottom: 1.5%;
+    background: transparent linear-gradient(180deg, #59D634 0%, #08670F 100%) 0% 0% no-repeat padding-box;
+    border-bottom: 1px solid #707070;
+    display: flex;
+	flex-direction: row;
+    justify-content: start;
+    align-items: center;
+}
+
+#logo-container {
+    width: 25%;
+    text-align: center;
+}
+
+#logo-container a {
+    width: 75%;
+    padding: 0% 15% 0% 10%;
+}
+
+#logo-container a img {
+    width: 75%;
+}
+
+#search-bar {
+    width: 25%;
+    height: 50%;
+    padding-left: 1%;
+    margin-right: 5%;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid #707070;
+    border-radius: 11px;
+    display: flex;
+	flex-direction: row;
+    justify-content: start;
+    align-items: center;
+}
+
+.input-field {
+    width: 90%;
+    height: 60%;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+#search-bar i {
+    width: 10%;
+    text-align: center;
+}
+
+#header a {
+    height: 50%;
+    margin-left: 2%;
+}
+
+#button-add {
+    height: 100%;
+    padding: 0% 5%;
+    background: #38055F 0% 0% no-repeat padding-box;
+    border: 1px solid #707070;
+    border-radius: 11px;
+    font: normal normal bold 20px/23px Arial;
+    color: #D47C18;
+    white-space: nowrap;
+}
+
+#button-my, #button-logout {
+    height: 100%;
+    padding: 0% 7%;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #707070;
+    border-radius: 11px;
+    font: normal normal bold 20px/23px Arial;
+    color: #D47C18;
+    white-space: nowrap;
+}
+
+@media only screen and (max-device-width: 420px) {
+    #header {
+        height: 10vh;
+    }
+
+    #logo-container {
+        width: 30%;
+        padding: 0 2.5%;
+    }
+
+    #logo-container a {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        opacity: 1!important;
+    }
+    
+    #logo-container a img {
+        width: 100%;
+    }
+
+    #search-bar {
+        width: 70%;
+        margin: 0;
+    }
+
+    #header a {
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
+
+    .input-field, #search-bar i {
+        font-size: 40px;
+    }
+}
