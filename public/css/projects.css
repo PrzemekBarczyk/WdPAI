@@ -37,9 +37,10 @@
     border: 1px solid #707070;
 }
 
-.single-ad img, .my-single-ad img {
+.project img, .my-project img {
     grid-area: a;
-    min-width: 100%;
+    width: auto;
+    height: 100%;
 }
 
 .name {
@@ -88,20 +89,17 @@
 @media only screen and (max-device-width: 420px) {
     #content {
         width: 100%;
+        padding: 0;
     }
 
     .project, .my-project {
-        width: 80%;
+        width: 95%;
         height: 15vh;
         display: grid;
-        grid-template-columns: 45% 55%;
+        grid-template-columns: 40% 60%;
         grid-template-rows: 64% 35%;
         grid-template-areas: "a b"
                              "c d";
-    }
-
-    .single-ad img, .my-single-ad img {
-        grid-area: a;
     }
     
     .name {
@@ -124,10 +122,11 @@
     }
     
     .delete {
-        width: 60%;
-        height: 25%;
-        padding-top: 3%;
-        margin: 20% 10% 20% 10%;
-        font: normal normal bold 30px Arial;
+        grid-area: d;
+        width: 40%;
+        height: 50%;
+        padding-top: 2%;
+        margin: 0;
+        font: normal normal normal 30px Arial;
     }
 }

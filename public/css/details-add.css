@@ -76,7 +76,44 @@
 }
 
 @media only screen and (max-device-width: 420px) {
+    #grid {
+        width: 95%;
+        padding: 0;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 15% 35% 35% 15%;
+        grid-template-areas: "a a"
+                            "b b"
+                            "c c"
+                            "d e";
+    }
 
+    #title {
+        grid-area: a;
+    }
+    
+    #image {
+        grid-area: b;
+    }
+    
+    #phone {
+        grid-area: d;
+    }
+    
+    #location {
+        grid-area: e;
+    }
+    
+    #description {
+        grid-area: c;
+    }
+
+    #grid div h4 {
+        font-size: 40px;
+    }
+    
+    #grid div h5 {
+        font-size: 35px;
 }
 
 #content {
@@ -159,5 +196,25 @@
 }
 
 @media only screen and (max-device-width: 420px) {
+    #content {
+        width: 90%;
+        padding: 0 5%;
+    }
 
+    .square {
+        width: 30%;
+        font-size: 40px;
+    }
+
+    #content div input {
+        width: 70%;
+    }
+
+    .title-input, .category-selector, .description-input {
+        font-size: 35px;
+    }
+
+    .description-input {
+        padding-top: 4%;
+    }
 }
