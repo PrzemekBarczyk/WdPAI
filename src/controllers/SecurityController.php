@@ -9,21 +9,23 @@ class SecurityController extends AppController {
 
         $user = new user('jsnow@pk.edu.pl', 'admin', 'John', 'Snow');
 
-        if (!$this->isPost()) {
-            return $this->login('login');
+        if (!$this->isPost()) { //
+            return $this->render('login');
+        } else if (isset($_POST['left-button'])) { // naciśnięto lewy przycisk
+            return $this->render('register');
         }
 
         $email = $_POST["email"];
         $password = $_POST["password"];
 
         if ($user->getEmail() !== $email) {
-            return $this->render('login', ['messages' => ['User with this email not exists!']]);
+            return $this->render('login', ['messages' => ['Użytkownik o podanym adresie email nie istnieje!']]);
         }
 
         if ($user->getPassword() !== $password) {
-            return $this->render('login', ['messages' => ['Wrong password!']]);
+            return $this->render('login', ['messages' => ['Błędne hasło!']]);
         }
 
-        return $this->render('all_projects');
+        return $this->render('all-projects');
     }
 }

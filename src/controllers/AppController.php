@@ -5,17 +5,20 @@ class AppController {
     private $request;
 
     public function __construct() {
-        $this->reqest = $_SERVER['REQUEST_METHOD'];
+        $this->request = $_SERVER['REQUEST_METHOD'];
     }
 
     protected function isGet(): bool {
-        return $this->reqest === "GET";
+        return $this->request === "GET";
     }
 
     protected function isPost(): bool {
-        return $this->reqest === "POST";
+        return $this->request === "POST";
     }
 
+    /*
+     * Wyświetla widok o otrzymanej nazwie i przekazuje mu otrzymane zmienne.
+     */
     protected function render(string $template=null, array $variables = []) {
 
         $templatePath = 'public/views/'.$template.'.php';

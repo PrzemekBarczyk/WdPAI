@@ -128,7 +128,7 @@
     align-items: center;
 }
 
-#entry-title, #choose-category {
+#entry-title, #choose-category, #submit {
     width: 100%;
     height: 7vh;
     margin: 1vw;
@@ -190,6 +190,7 @@
 }
 
 .photo {
+    position: absolute;
     width: 30%;
     height: 20vh;
     margin-top: 3%;
