@@ -16,9 +16,18 @@
         </div>
         
         <div id="form">
-            <div id="form-content">
+            <form id="form-content" action="register" method="post">
                 <div id="form-title-container">
                     <h4 id="form-title">Rejestracja</h4>
+                </div>
+                <div class="messages">
+                    <?php
+                    if(isset($messages)){
+                        foreach($messages as $message) {
+                            echo $message;
+                        }
+                    }
+                    ?>
                 </div>
                 <h5 class="field-title">Email</h5>
                 <div class="form-field">
@@ -33,7 +42,7 @@
                 <h5 class="field-title">Nazwa miejscowoci</h5>
                 <div class="form-field">
                     <i class="fas fa-map-marked-alt"></i>
-                    <input class="input-field" name="adress" type="text" placeholder="Nazwa miejscowości"> 
+                    <input class="input-field" name="location" type="text" placeholder="Nazwa miejscowości">
                 </div>
                 <h5 class="field-title">Hasło</h5>
                 <div class="form-field">

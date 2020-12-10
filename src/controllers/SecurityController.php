@@ -4,11 +4,19 @@ require_once 'AppController.php';
 require_once __DIR__.'/../models/User.php';
 require_once __DIR__.'/../repository/UserRepository.php';
 
+/**
+ * Handles login and register
+ */
 class SecurityController extends AppController {
 
-    public function login() {
-        $userRepository = new UserRepository();
+    private $userRepository;
 
+    public function __construct() {
+        parent::__construct();
+        $this->userRepository = new UserRepository();
+    }
+
+    public function login() {
         if (!$this->isPost()) {
             return $this->render('login');
         } else if (isset($_POST['left-button'])) { // pressed register button
@@ -16,9 +24,9 @@ class SecurityController extends AppController {
         }
 
         $email = $_POST["email"];
-        $password = $_POST["password"];
+        $password = md5($_POST["password"]);
 
-        $user = $userRepository->getUser($email);
+        $user = $this->userRepository->getUser($email);
 
         if (!$user) {
             return $this->render('login', ['messages' => ['Użytkownik nie istnieje!']]);
@@ -33,5 +41,22 @@ class SecurityController extends AppController {
         }
 
         return $this->render('all-projects');
+    }
+
+    public function register() {
+        if (!$this->isPost()) {
+            return $this->render('register');
+        }
+
+        $email = $_POST['email'];
+        $phone = $_POST['phone'];
+        $location = $_POST['location'];
+        $password = $_POST['password'];
+
+        $user = new User($email, $phone, $location, md5($password));
+
+        $this->userRepository->addUser($user);
+
+        return $this->render('login', ['messages' => ['You\'ve been succesfully registrated!']]);
     }
 }
