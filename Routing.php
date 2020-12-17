@@ -17,16 +17,22 @@ class Routing {
     }
 
     public static function run($url) {
-        $action = explode("/", $url)[0];
+        $action = explode("/", $url)[0]; // creates name of function responsible for handling url (returns arrays of strings, created by splitting $url)
 
-        if (!array_key_exists($action, self::$routes)) { // podany URL nie znajduje się w tablicy routing'u
+        // converts actions with "-" eg. "all-projects" -> "appProjects"
+        if (strpos($action, "-")) {
+            $dashIndex = strpos($action, "-");
+            $action = str_replace($action[$dashIndex+1], strtoupper($action[$dashIndex+1]), $action);
+            $action = str_replace("-", "", $action);
+        }
+
+        if (!array_key_exists($action, self::$routes)) { // given url is not in routing's table
             die("Wrong url!");
         }
 
-        $controller = self::$routes[$action];
+        $controller = self::$routes[$action]; // finds controller responsible for this action
         $object = new $controller;
-        $action = $action ?: 'index'; // zwróci 'index' jeśli $action nie istnieje
-
-        $object->$action();
+        $action = $action ?: 'index'; // return 'index' if $action doesn't exist
+        $object->$action(); // runs method to handle given url
     }
 }

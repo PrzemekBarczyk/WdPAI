@@ -17,12 +17,6 @@ class SecurityController extends AppController {
     }
 
     public function login() {
-        if (!$this->isPost()) {
-            return $this->render('login');
-        } else if (isset($_POST['left-button'])) { // pressed register button
-            return $this->render('register');
-        }
-
         $email = $_POST["email"];
         $password = md5($_POST["password"]);
 
@@ -40,7 +34,8 @@ class SecurityController extends AppController {
             return $this->render('login', ['messages' => ['Błędne hasło!']]);
         }
 
-        return $this->render('all-projects');
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/all-projects");
     }
 
     public function register() {

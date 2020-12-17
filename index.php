@@ -2,13 +2,13 @@
 
 require 'Routing.php';
 
-// pobiera aktualną ścieżkę
-$path = trim($_SERVER['REQUEST_URI'], '/');
-$path = parse_url($path, PHP_URL_PATH);
+// get actual path
+$path = trim($_SERVER['REQUEST_URI'], '/'); // return URI without '/' eg. "all-projects"
+$path = parse_url($path, PHP_URL_PATH); // returns last part of url eg. "all-projects"
 
-// dodaje adresy URL do tablicy routing'u
+// defines which controller handles which url
 Routing::get('', 'DefaultController');
-Routing::get('allProjects', 'DefaultController');
+Routing::get('allProjects', 'ProjectController');
 Routing::get('myProjects', 'DefaultController');
 Routing::get('projectDetails', 'DefaultController');
 Routing::post('login', 'SecurityController');

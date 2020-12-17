@@ -22,6 +22,11 @@ class ProjectController extends AppController {
         $this->projectRepository = new ProjectRepository();
     }
 
+    public function allProjects() {
+        $allProjects = $this->projectRepository->getProjects();
+        return $this->render('all-projects', ['allProjects' => $allProjects]);
+    }
+
     public function addProject() {
         if ($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {
             move_uploaded_file(
@@ -32,7 +37,10 @@ class ProjectController extends AppController {
             $project = new Project($_POST['title'], $_POST['description'], $_POST['category'], $_POST['date'], $_POST['location'], $_POST['file']['name']);
             $this->projectRepository->addProject($project);
 
-            return $this->render('all-projects', ['messages' => $this->messages, 'project' => $project]);
+            return $this->render('all-projects', [
+                'allProjects' => $this->projectRepository->getProject(),
+                'messages' => $this->messages, 'project' => $project
+            ]);
         }
 
         $this->render('add-project');

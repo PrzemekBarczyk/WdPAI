@@ -37,30 +37,14 @@
             </a>
         </div>
         <div id="content">
+            <?php foreach ($allProjects as $project): ?>
             <div class="project">
-                <img src="public/img/temp/img.PNG">
-                <h3 class="name">Sprzedam książke</h3>
-                <h4 class="category">Książki</h4>
-                <h4 class="location-and-date">Warszawa, 20.10.2020</h4>
+                <img src="public/uploads/<?= $project->getImage(); ?>">
+                <h3 class="name"><?= $project->getTitle(); ?></h3>
+                <h4 class="category"><?= $project->getCategory(); ?></h4>
+                <h4 class="location-and-date"><?= $project->getLocation(); ?>  <?= $project->getDate(); ?></h4>
             </div>
-            <div class="project">
-                <img src="public/img/temp/img.PNG">
-                <h3 class="name">Zatrudnię studenta</h3>
-                <h4 class="category">Praca</h4>
-                <h4 class="location-and-date">Kraków, 29.10.2020</h4>
-            </div>
-            <div class="project">
-                <img src="public/img/temp/img.PNG">
-                <h3 class="name">Bezdomny odda samochód</h3>
-                <h4 class="category">Motoryzacja</h4>
-                <h4 class="location-and-date">Toruń, 1.11.2020</h4>
-            </div>
-            <div class="project">
-                <img src="public/img/temp/img.PNG">
-                <h3 class="name">Oddam stare meble</h3>
-                <h4 class="category">Oddam</h4>
-                <h4 class="location-and-date">Warszawa, 20.10.2020</h4>
-            </div>
+            <?php endforeach; ?>
         </div>
         <div id="footer-bar">
             <a href="myProjects">

@@ -27,6 +27,29 @@ class ProjectRepository extends Repository {
         );
     }
 
+    public function getProjects(): array {
+        $result = [];
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM projects
+        ');
+        $stmt->execute();
+        $projects = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($projects as $project) {
+            $result[] = new Project(
+                $project['title'],
+                $project['description'],
+                $project['category'],
+                $project['date'],
+                $project['location'],
+                $project['image']
+            );
+        }
+
+        return $result;
+    }
+
     public function addProject(Project $project): void {
         $date = new DateTime();
         $stmt = $this->database->connect()->prepare('
