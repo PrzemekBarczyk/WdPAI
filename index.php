@@ -2,15 +2,17 @@
 
 require 'Routing.php';
 
+// pobiera aktualną ścieżkę
 $path = trim($_SERVER['REQUEST_URI'], '/');
 $path = parse_url($path, PHP_URL_PATH);
 
+// dodaje adresy URL do tablicy routing'u
 Routing::get('', 'DefaultController');
 Routing::get('register', 'DefaultController');
-Routing::get('all_projects', 'DefaultController');
-Routing::get('my_projects', 'DefaultController');
-Routing::get('add_project', 'DefaultController');
-Routing::get('project_details', 'DefaultController');
-Routing::get('login', 'SecurityController');
+Routing::get('allProjects', 'DefaultController');
+Routing::get('myProjects', 'DefaultController');
+Routing::get('projectDetails', 'DefaultController');
+Routing::post('login', 'SecurityController');
+Routing::post('addProject', 'ProjectController');
 
 Routing::run($path);

@@ -41,7 +41,7 @@
                     <input class="input-field" name="password" type="password" placeholder="Hasło">
                 </div>
                 <div class="buttons-container">
-                    <a href="index">
+                    <a href="">
                         <button class="right-button">Zarejestruj się</button>
                     </a>
                 </div>

@@ -5,17 +5,17 @@
 <head>
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="public/css/header-bar.css">
-    <link rel="stylesheet" type="text/css" href="public/css/projects.css">
+    <link rel="stylesheet" type="text/css" href="public/css/details-add.css">
     <link rel="stylesheet" type="text/css" href="public/css/footer-bar.css">
     <script src="https://kit.fontawesome.com/d4fac2996f.js" crossorigin="anonymous"></script>
-    <title>All project page</title>
+    <title>Project details page</title>
 </head>
 
 <body>
     <div id="container">
         <div id="header">
             <div id="logo-container">
-                <a href="all_projects">
+                <a href="allProjects">
                     <img src="public/img/logo.PNG">
                 </a>
             </div>
@@ -23,59 +23,58 @@
                 <input class="input-field" name="search" type="text" placeholder="Wyszukaj...">
                 <i class="fas fa-search"></i>
             </div>
-            <a href="add_project">
+            <a href="addProject">
                 <button id="button-add">
                     <i class="far fa-plus-square"></i>
                     Dodaj ogłoszenie
                 </button>
             </a>
-            <a href="my_projects">
+            <a href="myProjects">
                 <button id="button-my">Moje ogłoszenia</button>
             </a>
-            <a href="index">
+            <a href="">
                 <button id="button-logout">Wyloguj</button>
             </a>
         </div>
-        <div id="content">
-            <div class="project">
-                <img src="public/img/temp/img.PNG">
-                <h3 class="name">Sprzedam książke</h3>
-                <h4 class="category">Książki</h4>
-                <h4 class="location-and-date">Warszawa, 20.10.2020</h4>
+        <div id="grid">
+            <div id="title">
+                <h4>Tytuł</h4>
+                <h5>Sprzedam książke</h5>
             </div>
-            <div class="project">
+            <div id="image">
                 <img src="public/img/temp/img.PNG">
-                <h3 class="name">Zatrudnię studenta</h3>
-                <h4 class="category">Praca</h4>
-                <h4 class="location-and-date">Kraków, 29.10.2020</h4>
             </div>
-            <div class="project">
-                <img src="public/img/temp/img.PNG">
-                <h3 class="name">Bezdomny odda samochód</h3>
-                <h4 class="category">Motoryzacja</h4>
-                <h4 class="location-and-date">Toruń, 1.11.2020</h4>
+            <div id="phone">
+                <h4>Numer telefonu</h4>
+                <h5>666 324 102</h5>
             </div>
-            <div class="project">
-                <img src="public/img/temp/img.PNG">
-                <h3 class="name">Oddam stare meble</h3>
-                <h4 class="category">Oddam</h4>
-                <h4 class="location-and-date">Warszawa, 20.10.2020</h4>
+            <div id="location">
+                <h4>Lokalizacja</h4>
+                <h5>Kraków</h5>
+            </div>
+            <div id="description">
+                <h4>Opis</h4>
+                <h5>
+                    <p>Sprzedam książkę "Czysty kod" autorstwa Roberta C. Martin'a.</p>
+                    <p>Stan książki oceniam na bardzo dobry. Cena 30 zł. Możliwy odbiór osobisty lub wysyłka. 
+                        Po więcej informacji proszę dzwonić pod podany nr telefonu.</p>
+                </h5>
             </div>
         </div>
         <div id="footer-bar">
-            <a href="my_projects">
+            <a href="myProjects">
                 <button id="footer-button-my">
                     <i class="fas fa-comment-alt"></i>
                     Moje ogłoszenia
                 </button>
             </a>
-            <a href="add_project">
+            <a href="addProject">
                 <button id="footer-button-add">
                     <i class="far fa-plus-square"></i>
                     Dodaj ogłoszenie
                 </button>
             </a>
-            <a href="index">
+            <a href="">
                 <button id="footer-button-logout">
                     <i class="fas fa-sign-out-alt"></i>
                     Wyloguj

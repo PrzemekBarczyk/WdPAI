@@ -41,11 +41,9 @@
                 </div>
                 <div class="buttons-container">
                     <a href="register">
-                        <button class="left-button">Załóż konto</button>
+                        <button class="left-button" type="submit" name="left-button">Załóż konto</button>
                     </a>
-                    <a href="all_projects">
-                        <button class="right-button" type="submit">Zaloguj się</button>
-                    </a>
+                    <button class="right-button" type="submit" name="right-button">Zaloguj się</button>
                 </div>
             </form>
         </form>
