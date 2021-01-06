@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8"/>
-    <link rel="stylesheet" type="text/css" href="public/css/login-register.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/login-register.css">
     <script src="https://kit.fontawesome.com/d4fac2996f.js" crossorigin="anonymous"></script>
     <title>Register page</title>
 </head>
@@ -12,11 +12,11 @@
 <body>
     <div id="container">
         <div id="logo-container">
-            <img id="register-logo" src="public/img/logo.PNG">
+            <img id="register-logo" src="/public/img/logo.PNG" alt="logo">
         </div>
         
         <div id="form">
-            <form id="form-content" action="register" method="post">
+            <form action="register" method="post">
                 <div id="form-title-container">
                     <h4 id="form-title">Rejestracja</h4>
                 </div>
@@ -32,12 +32,12 @@
                 <h5 class="field-title">Email</h5>
                 <div class="form-field">
                     <i class="fas fa-envelope"></i>
-                    <input class="input-field" name="email" type="text" placeholder="Email"> 
+                    <input class="input-field" name="email" type="text" placeholder="Email">
                 </div>
                 <h5 class="field-title">Numer telefonu</h5>
                 <div class="form-field">
                     <i class="fas fa-mobile-alt"></i>
-                    <input class="input-field" name="phone" type="text" placeholder="Nr telefonu"> 
+                    <input class="input-field" name="phone" type="text" placeholder="Nr telefonu">
                 </div>
                 <h5 class="field-title">Nazwa miejscowoci</h5>
                 <div class="form-field">
