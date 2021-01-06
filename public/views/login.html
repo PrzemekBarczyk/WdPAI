@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8"/>
-
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/login-register.css">
+    <script src="https://kit.fontawesome.com/d4fac2996f.js" crossorigin="anonymous"></script>
     <title>Login page</title>
 </head>
 
@@ -17,30 +17,24 @@
         
         <div id="form">
             <div id="form-content">
-                <div id="form-header-container">
-                    <h4>Logowanie</h4>
+                <div id="form-title-container">
+                    <h4 id="form-title">Logowanie</h4>
                 </div>
-                <div id="input-container">
-                    <div class="form-field-with-header">
-                        <h5>Email</h5>
-                        <div class="form-field">
-                                <i class="icon"></i>
-                                <input class="input-field" name="email" type="text" placeholder="Email"> 
-                        </div>
-                    </div>
-                    <div class="form-field-with-header">
-                        <h5>Hasło</h5>
-                        <div class="form-field">
-                                <i class="icon"></i>
-                                <input class="input-field" name="password" type="text" placeholder="Hasło">
-                        </div>
-                    </div>
+                <h5 class="field-title">Email</h5>
+                <div class="form-field">
+                    <i class="fas fa-envelope"></i>
+                    <input class="input-field" name="email" type="text" placeholder="Email"> 
+                </div>
+                <h5 class="field-title">Hasło</h5>
+                <div class="form-field">
+                    <i class="fas fa-lock"></i>
+                    <input class="input-field" name="password" type="password" placeholder="Hasło">
                 </div>
                 <div class="buttons-container">
                     <a href="register.html">
                         <button class="left-button">Załóż konto</button>
                     </a>
-                    <a href="myprojects.html">
+                    <a href="all-projects.html">
                         <button class="right-button">Zaloguj się</button>
                     </a>
                 </div>

@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8"/>
-
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/login-register.css">
+    <script src="https://kit.fontawesome.com/d4fac2996f.js" crossorigin="anonymous"></script>
     <title>Register page</title>
 </head>
 
@@ -17,38 +17,28 @@
         
         <div id="form">
             <div id="form-content">
-                <div id="form-header-container">
-                    <h4>Rejestracja</h4>
+                <div id="form-title-container">
+                    <h4 id="form-title">Rejestracja</h4>
                 </div>
-                <div id="input-container">
-                    <div class="form-field-with-header">
-                        <h5>Email</h5>
-                        <div class="form-field">
-                                <i class="icon"></i>
-                                <input class="input-field" name="email" type="text" placeholder="Email"> 
-                        </div>
-                    </div>
-                    <div class="form-field-with-header">
-                        <h5>Numer telefonu</h5>
-                        <div class="form-field">
-                                <i class="icon"></i>
-                                <input class="input-field" name="phone" type="text" placeholder="Nr telefonu"> 
-                        </div>
-                    </div>
-                    <div class="form-field-with-header">
-                        <h5>Nazwa miejscowoci</h5>
-                        <div class="form-field">
-                                <i class="icon"></i>
-                                <input class="input-field" name="adress" type="text" placeholder="Nazwa miejscowości"> 
-                        </div>
-                    </div>
-                    <div class="form-field-with-header">
-                        <h5>Hasło</h5>
-                        <div class="form-field">
-                                <i class="icon"></i>
-                                <input class="input-field" name="password" type="text" placeholder="Hasło">
-                        </div>
-                    </div>
+                <h5 class="field-title">Email</h5>
+                <div class="form-field">
+                    <i class="fas fa-envelope"></i>
+                    <input class="input-field" name="email" type="text" placeholder="Email"> 
+                </div>
+                <h5 class="field-title">Numer telefonu</h5>
+                <div class="form-field">
+                    <i class="fas fa-mobile-alt"></i>
+                    <input class="input-field" name="phone" type="text" placeholder="Nr telefonu"> 
+                </div>
+                <h5 class="field-title">Nazwa miejscowoci</h5>
+                <div class="form-field">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <input class="input-field" name="adress" type="text" placeholder="Nazwa miejscowości"> 
+                </div>
+                <h5 class="field-title">Hasło</h5>
+                <div class="form-field">
+                    <i class="fas fa-lock"></i>
+                    <input class="input-field" name="password" type="password" placeholder="Hasło">
                 </div>
                 <div class="buttons-container">
                     <a href="login.html">
