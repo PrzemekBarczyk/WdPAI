@@ -1,0 +1,11 @@
+.no-valid {
+    width: 30vw;
+    height: 5vh;
+    text-align: left;
+    font: normal normal normal 20px/27px Segoe UI;
+    letter-spacing: 0;
+    color: #707070;
+    outline: none;
+    border: 3px solid red;
+    box-shadow: 0 0 0.2em red;
+}
