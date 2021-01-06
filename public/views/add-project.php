@@ -4,9 +4,9 @@
 
 <head>
     <meta charset="utf-8"/>
-    <link rel="stylesheet" type="text/css" href="public/css/header-bar.css">
-    <link rel="stylesheet" type="text/css" href="public/css/details-add.css">
-    <link rel="stylesheet" type="text/css" href="public/css/footer-bar.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/header-bar.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/details-add.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/footer-bar.css">
     <script src="https://kit.fontawesome.com/d4fac2996f.js" crossorigin="anonymous"></script>
     <title>Add project page</title>
 </head>
@@ -15,29 +15,30 @@
     <div id="container">
         <div id="header">
             <div id="logo-container">
-                <a href="allProjects">
-                    <img src="public/img/logo.PNG">
+                <a href="all-projects">
+                    <img src="/public/img/logo.PNG" alt="logo">
                 </a>
             </div>
             <div id="search-bar">
                 <input class="input-field" name="search" type="text" placeholder="Wyszukaj...">
                 <i class="fas fa-search"></i>
             </div>
-            <a href="addProject">
+            <a href="add-project">
                 <button id="button-add">
                     <i class="far fa-plus-square"></i>
                     Dodaj ogłoszenie
                 </button>
             </a>
-            <a href="myProjects">
+            <a href="my-projects">
                 <button id="button-my">Moje ogłoszenia</button>
             </a>
             <a href="">
                 <button id="button-logout">Wyloguj</button>
             </a>
         </div>
+        
         <div id="content">
-            <form action="addProject" method="POST" ENCTYPE="multipart/form-data">
+            <form action="add-project" method="POST" ENCTYPE="multipart/form-data">
                 <div class="messages">
                     <?php
                     if(isset($messages)){
@@ -57,40 +58,26 @@
                 </div>
                 <div id="write-description">
                     <div class="square">Opis</div>
-                    <textarea class="description-input" placeholder="Napisz coś o ogłoszeniu"></textarea>
+                    <textarea class="description-input" name="description" placeholder="Napisz coś o ogłoszeniu"></textarea>
                 </div>
                 <div id="upload-photos">
-                    <div class="square">Dodaj zdjęcia</div>
-                    <div id="photos">
-                        <label class="photo">
-                            <input type="file" name="file">
-                            <img class="photo" src="public/img/temp/img.PNG">
-                        </label>
-                        <label class="photo">
-                            <input type="file" name="file2">
-                            <img class="photo" src="public/img/temp/img.PNG">
-                        </label>
-                        <label class="photo">
-                            <input type="file" name="file3">
-                            <img class="photo" src="public/img/temp/img.PNG">
-                        </label>
-                    </div>
+                    <div class="square">Dodaj zdjęcie</div>
+                    <input id="add-photo" type="file" name="file">
                 </div>
-                <div id="submit">
-                    <button type="submit">
-                        <div class="square">Wyślij</div>
-                    </button>
+                <div id="send-photos">
+                    <button type="submit">Wyślij</button>
                 </div>
             </form>
         </div>
+        
         <div id="footer-bar">
-            <a href="myProjects">
+            <a href="my-projects">
                 <button id="footer-button-my">
                     <i class="fas fa-comment-alt"></i>
                     Moje ogłoszenia
                 </button>
             </a>
-            <a href="addProject">
+            <a href="add-project">
                 <button id="footer-button-add">
                     <i class="far fa-plus-square"></i>
                     Dodaj ogłoszenie

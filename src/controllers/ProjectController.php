@@ -34,11 +34,19 @@ class ProjectController extends AppController {
                 dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']
             );
 
-            $project = new Project($_POST['title'], $_POST['description'], $_POST['category'], $_POST['date'], $_POST['location'], $_POST['file']['name']);
-            $this->projectRepository->addProject($project);
+            $date = getdate(date("U"));
+            $project = new Project(
+                $_POST['title'],
+                $_POST['description'],
+                $_POST['category'],
+                $date["mday"].$date["month"].$date["year"],
+                "Kraków", // TODO: zmienić
+                $_POST['file']['name']
+            );
+            $this->projectRepository->addProject($project); // TODO: naprawić
 
             return $this->render('all-projects', [
-                'allProjects' => $this->projectRepository->getProject(),
+                'allProjects' => $this->projectRepository->getProjects(),
                 'messages' => $this->messages, 'project' => $project
             ]);
         }

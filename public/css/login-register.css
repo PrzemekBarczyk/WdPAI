@@ -4,7 +4,7 @@ html {
 
 body {
     margin: 0;
-    background: transparent linear-gradient(180deg, #59D634 0%, #2D6B1A 100%) 0% 0% no-repeat padding-box;
+    background: transparent linear-gradient(180deg, #59D634 0%, #2D6B1A 100%) 0 0 no-repeat padding-box;
 }
 
 #container {
@@ -12,7 +12,7 @@ body {
     height: 100vh;
 	display: flex;
 	flex-direction: column;
-    justify-content: top;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -34,14 +34,10 @@ body {
 }
 
 #form {
-	width: 40vw;
-	background: rgba(255, 255, 255, 0.4);
-    border-radius: 26px;
-}
-
-#form-content {
     width: 34vw;
-    margin: 0 3vw;
+    padding: 0 3vw 3vh 3vw;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 26px;
     display: flex;
 	flex-direction: column;
     justify-content: center;
@@ -57,21 +53,21 @@ body {
     margin: 0;
 	padding: 3vh;
     font: normal normal bold 25px/29px Arial;
-    letter-spacing: 0px;
+    letter-spacing: 0;
     color: #D47C18;
 }
 
 .field-title {
     margin: 0;
     font: normal normal bold 20px/23px Arial;
-    letter-spacing: 0px;
+    letter-spacing: 0;
     color: #D47C18;
 }
 
 .form-field {
     width: inherit;
     margin-bottom: 5vh;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
+    background: #FFFFFF 0 0 no-repeat padding-box;
     border: 1px solid #707070;
     display: flex;
 	flex-direction: row;
@@ -93,7 +89,7 @@ body {
     text-align: left;
     font: normal normal normal 20px/27px Segoe UI;
     border: none;
-    letter-spacing: 0px;
+    letter-spacing: 0;
     color: #707070;
     outline: none;
 }
@@ -118,7 +114,7 @@ body {
     float: right;
     height: 5vh;
     padding: 0 1vw;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
+    background: #FFFFFF 0 0 no-repeat padding-box;
     border: none;
     color: #D47C18;
     text-align: center;
@@ -126,7 +122,7 @@ body {
 }
 
 .left-button:hover, .right-button:hover {
-    background: #EEEEEE 0% 0% no-repeat padding-box;
+    background: #EEEEEE 0 0 no-repeat padding-box;
 }
 
 @media only screen and (max-device-width: 420px) {
