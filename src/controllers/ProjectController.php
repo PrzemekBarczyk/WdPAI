@@ -2,7 +2,11 @@
 
 require_once 'AppController.php';
 require_once __DIR__.'/../models/Project.php';
+require_once __DIR__.'/../repository/ProjectRepository.php';
 
+/**
+ * Handles adding project
+ */
 class ProjectController extends AppController {
 
     const MAX_FILE_SIZE = 1024*1024;
@@ -10,6 +14,18 @@ class ProjectController extends AppController {
     const UPLOAD_DIRECTORY = '/../public/uploads/';
 
     private $messages = [];
+    private $projectRepository;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->projectRepository = new ProjectRepository();
+    }
+
+    public function allProjects() {
+        $allProjects = $this->projectRepository->getProjects();
+        return $this->render('all-projects', ['allProjects' => $allProjects]);
+    }
 
     public function addProject() {
         if ($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {
@@ -18,9 +34,13 @@ class ProjectController extends AppController {
                 dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']
             );
 
-            $project = new Project($_POST['title'], $_POST['description'], $_POST['file']['name']);
+            $project = new Project($_POST['title'], $_POST['description'], $_POST['category'], $_POST['date'], $_POST['location'], $_POST['file']['name']);
+            $this->projectRepository->addProject($project);
 
-            return $this->render('all-projects', ['messages' => $this->messages, 'project' => $project]);
+            return $this->render('all-projects', [
+                'allProjects' => $this->projectRepository->getProject(),
+                'messages' => $this->messages, 'project' => $project
+            ]);
         }
 
         $this->render('add-project');

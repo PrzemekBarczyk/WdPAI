@@ -41,7 +41,7 @@
                 </div>
                 <div class="buttons-container">
                     <a href="register">
-                        <button class="left-button" type="submit" name="left-button">Załóż konto</button>
+                        <button class="left-button" type="button" name="left-button">Załóż konto</button>
                     </a>
                     <button class="right-button" type="submit" name="right-button">Zaloguj się</button>
                 </div>

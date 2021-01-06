@@ -3,7 +3,7 @@
 require_once 'AppController.php';
 
 /*
- * W zależności od wywołanej metody tworzy odpowiadający jej widok.
+ * W zależności od wywołanej metody wyświetla odpowiadający jej widok.
  */
 class DefaultController extends AppController {
     
@@ -13,10 +13,6 @@ class DefaultController extends AppController {
 
     public function register() {
         $this->render('register');
-    }
-
-    public function all_projects() {
-        $this->render('all-projects');
     }
     
     public function my_projects() {
