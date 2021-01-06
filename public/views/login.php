@@ -16,9 +16,18 @@
         </div>
         
         <div id="form">
-            <div id="form-content">
+            <form id="form-content" action="login" method="post">
                 <div id="form-title-container">
                     <h4 id="form-title">Logowanie</h4>
+                </div>
+                <div class="messages">
+                    <?php
+                    if(isset($messages)){
+                        foreach($messages as $message) {
+                            echo $message;
+                        }
+                    }
+                    ?>
                 </div>
                 <h5 class="field-title">Email</h5>
                 <div class="form-field">
@@ -35,11 +44,11 @@
                         <button class="left-button">Załóż konto</button>
                     </a>
                     <a href="all_projects">
-                        <button class="right-button">Zaloguj się</button>
+                        <button class="right-button" type="submit">Zaloguj się</button>
                     </a>
                 </div>
             </form>
-        </div>
+        </form>
     </div>
 </body>
 
