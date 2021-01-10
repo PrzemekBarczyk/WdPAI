@@ -40,12 +40,14 @@
 
         <div id="content">
             <?php foreach ($allProjects as $project): ?>
-                <div class="project">
-                    <img src="public/uploads/<?= $project->getImage(); ?>" alt="zdjęcie">
-                    <h3 class="name"><?= $project->getTitle(); ?></h3>
-                    <h4 class="category"><?= $project->getCategory(); ?></h4>
-                    <h4 class="location-and-date"><?= $project->getLocation(); ?>  <?= $project->getDate(); ?></h4>
-                </div>
+                <a href="project-details/<?= $project->getId(); ?>">
+                    <div class="project">
+                        <img src="public/uploads/<?= $project->getImage(); ?>" alt="zdjęcie">
+                        <h3 class="name"><?= $project->getTitle(); ?></h3>
+                        <h4 class="category"><?= $project->getCategory(); ?></h4>
+                        <h4 class="location-and-date"><?= $project->getLocation(); ?>  <?= $project->getDate(); ?></h4>
+                    </div>
+                </a>
             <?php endforeach; ?>
         </div>
 

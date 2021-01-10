@@ -23,8 +23,7 @@ class SecurityController extends AppController {
 
     public function login() {
         if (!$this->isPost()) {
-            $url = "http://$_SERVER[HTTP_HOST]";
-            header("Location: {$url}");
+            $this->render('login');
             return;
         }
 
@@ -49,28 +48,26 @@ class SecurityController extends AppController {
         $this->sessionController->setSession($user->getEmail());
 
         $url = "http://$_SERVER[HTTP_HOST]";
-        header("Location: {$url}/all-projects");
+        header("Location: {$url}/all-project");
     }
 
     public function register() {
         if (!$this->isPost()) {
             $this->render('register');
-        }
-        else {
-            $email = $_POST['email'];
-            $phone = $_POST['phone'];
-            $location = $_POST['location'];
-            $password = $_POST['password'];
-
-            $user = new User(0, $email, $phone, $location, md5($password));
-
-            $this->userRepository->addUser($user);
-
-            $this->sessionController->deleteSesion();
-
-            $this->render('login', ['messages' => ['You\'ve been succesfully registrated!']]);
+            return;
         }
 
+        $email = $_POST['email'];
+        $phone = $_POST['phone'];
+        $location = $_POST['location'];
+        $password = $_POST['password'];
 
+        $user = new User($email, $phone, $location, md5($password));
+
+        $this->userRepository->addUser($user);
+
+        $this->sessionController->logout();
+
+        $this->render('login', ['messages' => ['Założono konto']]);
     }
 }

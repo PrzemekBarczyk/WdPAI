@@ -23,8 +23,9 @@ class ProjectRepository extends Repository {
             $project['category'],
             $project['date'],
             $project['location'],
-            $project['userId'],
-            $project['image']
+            $project['id_user'],
+            $project['image'],
+            $project['id']
         );
     }
 
@@ -56,8 +57,9 @@ class ProjectRepository extends Repository {
                 $project['category'],
                 $project['date'],
                 $project['location'],
-                $project['userId'],
-                $project['image']
+                $project['id_user'],
+                $project['image'],
+                $project['id']
             );
         }
 
@@ -69,9 +71,8 @@ class ProjectRepository extends Repository {
 
         $stmt = $this->database->connect()->prepare('
             SELECT * FROM projects WHERE id_user = :userId
-        '); // TODO: upewnić się że zapytanie działa
+        ');
         $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
-
         $stmt->execute();
         $projects = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -82,8 +83,9 @@ class ProjectRepository extends Repository {
                 $project['category'],
                 $project['date'],
                 $project['location'],
-                $project['userId'],
-                $project['image']
+                $project['id_user'],
+                $project['image'],
+                $project['id']
             );
         }
 

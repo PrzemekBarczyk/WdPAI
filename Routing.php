@@ -17,7 +17,8 @@ class Routing {
     }
 
     public static function run($url) {
-        $action = explode("/", $url)[0]; // creates name of function responsible for handling url (returns arrays of strings, created by splitting $url)
+        $urlParts = explode("/", $url); // creates name of function responsible for handling url (returns arrays of strings, created by splitting $url)
+        $action = $urlParts[0];
 
         // converts actions with "-" eg. "all-projects" -> "appProjects"
         if (strpos($action, "-")) {
@@ -33,6 +34,9 @@ class Routing {
         $controller = self::$routes[$action]; // finds controller responsible for this action
         $object = new $controller;
         $action = $action ?: 'index'; // return 'index' if $action doesn't exist
-        $object->$action(); // runs method to handle given url
+
+        $id = $urlParts[1] ?? '';
+
+        $object->$action($id); // runs method to handle given url
     }
 }

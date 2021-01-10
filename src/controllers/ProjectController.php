@@ -38,24 +38,26 @@ class ProjectController extends AppController {
     }
 
     public function myProjects() {
-        if (!$this->sessionController->isSessionSet()) { // TODO: check if works
+        if (!$this->sessionController->isSessionSet()) {
             $url = "http://$_SERVER[HTTP_HOST]";
-            header("Location: {$url}/");
+            header("Location: {$url}");
+            return;
         }
-        else {
-            $userId = $this->userRepository->getUser($_SESSION["email"])->getId();
 
-            $myProjects = $this->projectRepository->getMyProjects($userId); // TODO: check if works correctly
-            $this->render('my-projects', ['myProjects' => $myProjects]);
-        }
+        $userId = $this->userRepository->getUser($_SESSION["email"])->getId();
+        $myProjects = $this->projectRepository->getMyProjects($userId);
+
+        $this->render('my-projects', ['myProjects' => $myProjects]);
     }
 
     public function addProject() {
-        if (!$this->sessionController->isSessionSet()) { // TODO: check if works
+        if (!$this->sessionController->isSessionSet()) {
             $url = "http://$_SERVER[HTTP_HOST]";
-            header("Location: {$url}/");
+            header("Location: {$url}");
+            return;
         }
-        else if ($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {
+
+        if ($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {
             move_uploaded_file(
                 $_FILES['file']['tmp_name'],
                 dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']
@@ -77,14 +79,27 @@ class ProjectController extends AppController {
 
             $this->projectRepository->addProject($project);
 
-            $this->render('all-projects', [
-                'allProjects' => $this->projectRepository->getAllProjects(),
-                'messages' => $this->messages, 'project' => $project
-            ]);
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/all-projects");
         }
-        else {
-            $this->render('add-project');
+
+        $this->render('add-project');
+    }
+
+    public function projectDetails($id) {
+        if (!$this->sessionController->isSessionSet()) {
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}");
+            return;
         }
+
+        $project = $this->projectRepository->getProject($id);
+        $user = $this->userRepository->getUser($_SESSION['email']);
+
+        $this->render('project-details', [
+            'project' => $project,
+            'user' => $user
+        ]);
     }
 
 //    public function deleteProject() {

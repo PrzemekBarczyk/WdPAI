@@ -16,7 +16,7 @@ class DefaultController extends AppController {
     }
     
     public function myProjects() {
-        $this->render('my-projects');
+        $this->render('my-projectPicker');
     }
 
     public function addProject() {

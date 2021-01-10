@@ -1,6 +1,6 @@
 #grid {
     width: 50%;
-    height: auto;
+    height: 80vh;
     padding: 0 25%;
     display: grid;
     grid-template-columns: 60% 40%;
@@ -28,7 +28,7 @@
 }
 
 #image img {
-    width: 100%;
+    width: auto;
     height: 100%;
 }
 
@@ -62,7 +62,7 @@
 #grid div h4 {
     margin: 0 0 1vh 0;
     text-align: left;
-    font: normal normal bold 20px Arial;
+    font: normal normal bold 18px Arial;
     letter-spacing: 0px;
     color: #000000;
 }
@@ -70,7 +70,7 @@
 #grid div h5 {
     margin: 0;
     text-align: left;
-    font: normal normal normal 20px Arial;
+    font: normal normal normal 16px Arial;
     letter-spacing: 0px;
     color: #000000;
 }
