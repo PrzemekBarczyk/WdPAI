@@ -23,11 +23,24 @@ class ProjectRepository extends Repository {
             $project['category'],
             $project['date'],
             $project['location'],
+            $project['userId'],
             $project['image']
         );
     }
 
-    public function getProjects(): array {
+    public function getProjectByTitle(string $searchString) {
+        $searchString = '%'.strtolower($searchString).'%';
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM projects WHERE lower(title) LIKE :search OR LOWER(description) LIKE :search
+        ');
+        $stmt->bindParam(':search', $searchString, PDO::PARAM_STR);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getAllProjects(): array {
         $result = [];
 
         $stmt = $this->database->connect()->prepare('
@@ -43,6 +56,33 @@ class ProjectRepository extends Repository {
                 $project['category'],
                 $project['date'],
                 $project['location'],
+                $project['userId'],
+                $project['image']
+            );
+        }
+
+        return $result;
+    }
+
+    public function getMyProjects(int $userId): array {
+        $result = [];
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM projects WHERE id_user = :userId
+        '); // TODO: upewnić się że zapytanie działa
+        $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+
+        $stmt->execute();
+        $projects = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($projects as $project) {
+            $result[] = new Project(
+                $project['title'],
+                $project['description'],
+                $project['category'],
+                $project['date'],
+                $project['location'],
+                $project['userId'],
                 $project['image']
             );
         }
@@ -51,34 +91,19 @@ class ProjectRepository extends Repository {
     }
 
     public function addProject(Project $project): void {
-        $date = new DateTime();
         $stmt = $this->database->connect()->prepare('
             INSERT INTO projects (title, description, category, date, location, id_user, image)
             VALUES (?, ?, ?, ?, ?, ?, ?)
         ');
 
-        $id_user = 1; // TODO: change in future
-
         $stmt->execute([
             $project->getTitle(),
             $project->getDescription(),
             $project->getCategory(),
-            $date->format('Y-m-d'),
+            $project->getDate(),
             $project->getLocation(),
-            $id_user,
+            $project->getUserId(),
             $project->getImage()
         ]);
-    }
-
-    public function getProjectByTitle(string $searchString) {
-        $searchString = '%'.strtolower($searchString).'%';
-
-        $stmt = $this->database->connect()->prepare('
-            SELECT * FROM projects WHERE lower(title) LIKE :search OR LOWER(description) LIKE :search
-        ');
-        $stmt->bindParam(':search', $searchString, PDO::PARAM_STR);
-        $stmt->execute();
-
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

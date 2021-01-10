@@ -15,15 +15,15 @@ class DefaultController extends AppController {
         $this->render('register');
     }
     
-    public function my_projects() {
+    public function myProjects() {
         $this->render('my-projects');
     }
 
-    public function add_project() {
+    public function addProject() {
         $this->render('add-project');
     }
 
-    public function project_details() {
+    public function projectDetails() {
         $this->render('project-details');
     }
 }

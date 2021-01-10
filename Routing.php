@@ -6,7 +6,7 @@ require_once 'src/controllers/ProjectController.php';
 
 class Routing {
 
-    public static $routes; // tablica asocjacyjna z parami "url"=>"widok"
+    public static $routes; // associative array with pairs "url"=>"view"
 
     public static function get($url, $view) {
         self::$routes[$url] = $view;

@@ -32,30 +32,20 @@
             <a href="my-projects">
                 <button id="button-my">Moje ogłoszenia</button>
             </a>
-            <a href="">
+            <a href="logout">
                 <button id="button-logout">Wyloguj</button>
             </a>
         </div>
 
         <div id="content">
-			<div class="my-project">
-                <img src="/public/img/temp/img.png" alt="obrazek">
-                <h3 class="name">Student szuka praktyki</h3>
-                <h4 class="category">Praca</h4>
-                <div class="delete">Usuń</div>
-			</div>
-			<div class="my-project">
-                <img src="/public/img/temp/img.png" alt="obrazek">
-                <h3 class="name">Kupię kilogram ryżu</h3>
-                <h4 class="category">Inne</h4>
-                <div class="delete">Usuń</div>
-			</div>
-			<div class="my-project">
-                <img src="/public/img/temp/img.png" alt="obrazek">
-                <h3 class="name">Szukam współlokatora</h3>
-                <h4 class="category">Mieszkanie</h4>
-                <div class="delete">Usuń</div>
-            </div>
+            <?php foreach ($myProjects as $project): ?>
+                <div class="my-project">
+                    <img src="public/uploads/<?= $project->getImage(); ?>" alt="zdjęcie">
+                    <h3 class="name"><?= $project->getTitle(); ?></h3>
+                    <h4 class="category"><?= $project->getCategory(); ?></h4>
+                    <div class="delete">Usuń</div>
+                </div>
+            <?php endforeach; ?>
         </div>
 
         <div id="footer-bar">

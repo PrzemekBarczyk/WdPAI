@@ -3,6 +3,7 @@
 session_start();
 
 require_once 'AppController.php';
+require_once __DIR__.'/../controllers/SessionController.php';
 require_once __DIR__.'/../models/Project.php';
 require_once __DIR__.'/../repository/ProjectRepository.php';
 
@@ -12,6 +13,7 @@ class ProjectController extends AppController {
     const SUPPORTED_TYPES = ['image/png', 'image/jpeg'];
     const UPLOAD_DIRECTORY = '/../public/uploads/';
 
+    private $sessionController;
     private $messages = [];
     private $projectRepository;
     private $userRepository;
@@ -19,30 +21,41 @@ class ProjectController extends AppController {
     public function __construct()
     {
         parent::__construct();
+        $this->sessionController = new SessionController();
         $this->projectRepository = new ProjectRepository();
         $this->userRepository = new UserRepository();
     }
 
     public function allProjects() {
-        // TODO: check if sesion established, if not go to login page
+        if (!$this->sessionController->isSessionSet()) {
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}");
+            return;
+        }
 
         $allProjects = $this->projectRepository->getAllProjects();
         $this->render('all-projects', ['allProjects' => $allProjects]);
     }
 
     public function myProjects() {
-        // TODO: check if sesion established, if not go to login page
+        if (!$this->sessionController->isSessionSet()) { // TODO: check if works
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/");
+        }
+        else {
+            $userId = $this->userRepository->getUser($_SESSION["email"])->getId();
 
-        $userId = $this->userRepository->getUser($_SESSION["email"])->getId();
-
-        $myProjects = $this->projectRepository->getMyProjects($userId); // TODO: check if works correctly
-        $this->render('my-projects', ['myProjects' => $myProjects]);
+            $myProjects = $this->projectRepository->getMyProjects($userId); // TODO: check if works correctly
+            $this->render('my-projects', ['myProjects' => $myProjects]);
+        }
     }
 
     public function addProject() {
-        // TODO: check if sesion established, if not go to login page
-
-        if ($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {
+        if (!$this->sessionController->isSessionSet()) { // TODO: check if works
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/");
+        }
+        else if ($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {
             move_uploaded_file(
                 $_FILES['file']['tmp_name'],
                 dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']
@@ -62,18 +75,21 @@ class ProjectController extends AppController {
                 $_FILES['file']['name']
             );
 
-            $this->projectRepository->addProject($project); // TODO: naprawić
+            $this->projectRepository->addProject($project);
 
             $this->render('all-projects', [
                 'allProjects' => $this->projectRepository->getAllProjects(),
                 'messages' => $this->messages, 'project' => $project
             ]);
         }
-
         else {
             $this->render('add-project');
         }
     }
+
+//    public function deleteProject() {
+//
+//    }
 
     private function validate(array $file): bool
     {

@@ -33,7 +33,7 @@
             <a href="my-projects">
                 <button id="button-my">Moje ogłoszenia</button>
             </a>
-            <a href="">
+            <a href="logout">
                 <button id="button-logout">Wyloguj</button>
             </a>
         </div>

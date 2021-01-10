@@ -7,7 +7,7 @@ class UserRepository extends Repository {
 
     public function getUser(string $email): ?User {
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM users u LEFT JOIN users_details ud
+            SELECT * FROM users_details ud LEFT JOIN users u
             ON u.id_user_details = ud.id WHERE email = :email
         ');
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);
@@ -19,6 +19,7 @@ class UserRepository extends Repository {
             return null;
 
         return new User(
+            $user['id'],
             $user['email'],
             $user['phone'],
             $user['location'],

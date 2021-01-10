@@ -8,15 +8,17 @@ class Project
     private $category;
     private $date;
     private $location;
+    private $userId;
     private $image;
 
-    public function __construct($title, $description, $category, $date, $location, $image)
+    public function __construct($title, $description, $category, $date, $location, $userId, $image)
     {
         $this->title = $title;
         $this->description = $description;
         $this->category = $category;
         $this->date = $date;
         $this->location = $location;
+        $this->userId = $userId;
         $this->image = $image;
     }
 
@@ -70,12 +72,22 @@ class Project
         $this->location = $location;
     }
 
-    public function getImage(): string
+    public function getUserId(): int
+    {
+        return $this->userId;
+    }
+
+    public function setUserId(string $userId)
+    {
+        $this->userId = $userId;
+    }
+
+    public function getImage()
     {
         return $this->image;
     }
 
-    public function setImage(string $image)
+    public function setImage($image)
     {
         $this->image = $image;
     }
