@@ -48,7 +48,7 @@ class SecurityController extends AppController {
         $this->sessionController->setSession($user->getEmail());
 
         $url = "http://$_SERVER[HTTP_HOST]";
-        header("Location: {$url}/all-project");
+        header("Location: {$url}/all-projects");
     }
 
     public function register() {
