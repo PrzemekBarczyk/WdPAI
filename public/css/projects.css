@@ -30,10 +30,9 @@
 }
 
 .my-project {
-    width: 80%;
+    width: 98%;
     height: 20vh;
-    padding: 1% 1%;
-    margin: 1% 1% 0% 1%;
+    padding: 1vh 1%;
     display: grid;
     grid-template-columns: 30% 40% 30%;
     grid-template-rows: 50% 50%;
