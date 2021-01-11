@@ -45,7 +45,7 @@ class ProjectRepository extends Repository {
         $result = [];
 
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM projects
+            SELECT * FROM projects ORDER BY id DESC
         ');
         $stmt->execute();
         $projects = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -70,7 +70,7 @@ class ProjectRepository extends Repository {
         $result = [];
 
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM projects WHERE id_user = :userId
+            SELECT * FROM projects WHERE id_user = :userId ORDER BY id DESC
         ');
         $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
         $stmt->execute();
