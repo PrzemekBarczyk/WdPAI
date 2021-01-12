@@ -1,12 +1,11 @@
 <?php
 
+session_start();
+
 require_once 'AppController.php';
 require_once __DIR__.'/../models/Project.php';
 require_once __DIR__.'/../repository/ProjectRepository.php';
 
-/**
- * Handles adding project
- */
 class ProjectController extends AppController {
 
     const MAX_FILE_SIZE = 1024*1024;
@@ -15,43 +14,65 @@ class ProjectController extends AppController {
 
     private $messages = [];
     private $projectRepository;
+    private $userRepository;
 
     public function __construct()
     {
         parent::__construct();
         $this->projectRepository = new ProjectRepository();
+        $this->userRepository = new UserRepository();
     }
 
     public function allProjects() {
-        $allProjects = $this->projectRepository->getProjects();
-        return $this->render('all-projects', ['allProjects' => $allProjects]);
+        // TODO: check if sesion established, if not go to login page
+
+        $allProjects = $this->projectRepository->getAllProjects();
+        $this->render('all-projects', ['allProjects' => $allProjects]);
+    }
+
+    public function myProjects() {
+        // TODO: check if sesion established, if not go to login page
+
+        $userId = $this->userRepository->getUser($_SESSION["email"])->getId();
+
+        $myProjects = $this->projectRepository->getMyProjects($userId); // TODO: check if works correctly
+        $this->render('my-projects', ['myProjects' => $myProjects]);
     }
 
     public function addProject() {
+        // TODO: check if sesion established, if not go to login page
+
         if ($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {
             move_uploaded_file(
                 $_FILES['file']['tmp_name'],
                 dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']
             );
 
-            $date = getdate(date("U"));
+            $user = $this->userRepository->getUser($_SESSION["email"]); // gets actual user info from database using session
+            $localization = $user->getLocation();
+            $userId = $user->getId();
+
             $project = new Project(
                 $_POST['title'],
                 $_POST['description'],
                 $_POST['category'],
-                $date["mday"].$date["month"].$date["year"],
-                "Kraków", // TODO: zmienić
-                $_POST['file']['name']
+                date("Y-m-d"),
+                $localization,
+                $userId,
+                $_FILES['file']['name']
             );
+
             $this->projectRepository->addProject($project); // TODO: naprawić
 
-            return $this->render('all-projects', [
-                'allProjects' => $this->projectRepository->getProjects(),
+            $this->render('all-projects', [
+                'allProjects' => $this->projectRepository->getAllProjects(),
                 'messages' => $this->messages, 'project' => $project
             ]);
         }
 
-        $this->render('add-project');
+        else {
+            $this->render('add-project');
+        }
     }
 
     private function validate(array $file): bool
