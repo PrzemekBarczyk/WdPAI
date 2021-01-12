@@ -23,51 +23,10 @@ class ProjectRepository extends Repository {
             $project['category'],
             $project['date'],
             $project['location'],
-            $project['image']
+            $project['id_user'],
+            $project['image'],
+            $project['id']
         );
-    }
-
-    public function getProjects(): array {
-        $result = [];
-
-        $stmt = $this->database->connect()->prepare('
-            SELECT * FROM projects
-        ');
-        $stmt->execute();
-        $projects = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        foreach ($projects as $project) {
-            $result[] = new Project(
-                $project['title'],
-                $project['description'],
-                $project['category'],
-                $project['date'],
-                $project['location'],
-                $project['image']
-            );
-        }
-
-        return $result;
-    }
-
-    public function addProject(Project $project): void {
-        $date = new DateTime();
-        $stmt = $this->database->connect()->prepare('
-            INSERT INTO projects (title, description, category, date, location, id_user, image)
-            VALUES (?, ?, ?, ?, ?, ?, ?)
-        ');
-
-        $id_user = 1; // TODO: change in future
-
-        $stmt->execute([
-            $project->getTitle(),
-            $project->getDescription(),
-            $project->getCategory(),
-            $date->format('Y-m-d'),
-            $project->getLocation(),
-            $id_user,
-            $project->getImage()
-        ]);
     }
 
     public function getProjectByTitle(string $searchString) {
@@ -80,5 +39,73 @@ class ProjectRepository extends Repository {
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getAllProjects(): array {
+        $result = [];
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM projects ORDER BY id DESC
+        ');
+        $stmt->execute();
+        $projects = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($projects as $project) {
+            $result[] = new Project(
+                $project['title'],
+                $project['description'],
+                $project['category'],
+                $project['date'],
+                $project['location'],
+                $project['id_user'],
+                $project['image'],
+                $project['id']
+            );
+        }
+
+        return $result;
+    }
+
+    public function getMyProjects(int $userId): array {
+        $result = [];
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM projects WHERE id_user = :userId ORDER BY id DESC
+        ');
+        $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+        $projects = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($projects as $project) {
+            $result[] = new Project(
+                $project['title'],
+                $project['description'],
+                $project['category'],
+                $project['date'],
+                $project['location'],
+                $project['id_user'],
+                $project['image'],
+                $project['id']
+            );
+        }
+
+        return $result;
+    }
+
+    public function addProject(Project $project): void {
+        $stmt = $this->database->connect()->prepare('
+            INSERT INTO projects (title, description, category, date, location, id_user, image)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+        ');
+
+        $stmt->execute([
+            $project->getTitle(),
+            $project->getDescription(),
+            $project->getCategory(),
+            $project->getDate(),
+            $project->getLocation(),
+            $project->getUserId(),
+            $project->getImage()
+        ]);
     }
 }
