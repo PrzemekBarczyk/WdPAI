@@ -5,6 +5,8 @@
 <head>
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="/public/css/login-register.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/style.css">
+    <script type="text/javascript" src="./public/js/script.js" defer></script>
     <script src="https://kit.fontawesome.com/d4fac2996f.js" crossorigin="anonymous"></script>
     <title>Register page</title>
 </head>

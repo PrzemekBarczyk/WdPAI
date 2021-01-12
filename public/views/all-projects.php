@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="/public/css/header-bar.css">
     <link rel="stylesheet" type="text/css" href="/public/css/projects.css">
     <link rel="stylesheet" type="text/css" href="/public/css/footer-bar.css">
+    <script type="text/javascript" src="./public/js/search.js" defer></script>
     <script src="https://kit.fontawesome.com/d4fac2996f.js" crossorigin="anonymous"></script>
     <title>All project page</title>
 </head>
@@ -39,12 +40,12 @@
 
         <div id="content">
             <?php foreach ($allProjects as $project): ?>
-            <div class="project">
-                <img src="public/uploads/<?= $project->getImage(); ?>">
-                <h3 class="name"><?= $project->getTitle(); ?></h3>
-                <h4 class="category"><?= $project->getCategory(); ?></h4>
-                <h4 class="location-and-date"><?= $project->getLocation(); ?>  <?= $project->getDate(); ?></h4>
-            </div>
+                <div class="project">
+                    <img src="public/uploads/<?= $project->getImage(); ?>" alt="zdjęcie">
+                    <h3 class="name"><?= $project->getTitle(); ?></h3>
+                    <h4 class="category"><?= $project->getCategory(); ?></h4>
+                    <h4 class="location-and-date"><?= $project->getLocation(); ?>  <?= $project->getDate(); ?></h4>
+                </div>
             <?php endforeach; ?>
         </div>
 
@@ -72,3 +73,12 @@
 </body>
 
 </html>
+
+<template id="project-template">
+    <div class="project">
+        <img src="">
+        <h3 class="name"></h3>
+        <h4 class="category"></h4>
+        <h4 class="location-and-date"></h4>
+    </div>
+</template>
