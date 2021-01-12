@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="/public/css/style.css">
     <script type="text/javascript" src="./public/js/script.js" defer></script>
     <script src="https://kit.fontawesome.com/d4fac2996f.js" crossorigin="anonymous"></script>
-    <title>Register page</title>
+    <title>Register Page</title>
 </head>
 
 <body>
@@ -16,7 +16,6 @@
         <div id="logo-container">
             <img id="register-logo" src="/public/img/logo.PNG" alt="logo">
         </div>
-        
         <form id="form" action="register" method="post">
             <div id="form-title-container">
                 <h4 id="form-title">Rejestracja</h4>
@@ -40,7 +39,7 @@
                 <i class="fas fa-mobile-alt"></i>
                 <input class="input-field" name="phone" type="text" placeholder="Nr telefonu">
             </div>
-            <h5 class="field-title">Nazwa miejscowoci</h5>
+            <h5 class="field-title">Nazwa miejscowości</h5>
             <div class="form-field">
                 <i class="fas fa-map-marked-alt"></i>
                 <input class="input-field" name="location" type="text" placeholder="Nazwa miejscowości">
