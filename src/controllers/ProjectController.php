@@ -86,14 +86,14 @@ class ProjectController extends AppController {
         $this->render('add-project');
     }
 
-    public function projectDetails($id) {
+    public function projectDetails($projectId) {
         if (!$this->sessionController->isSessionSet()) {
             $url = "http://$_SERVER[HTTP_HOST]";
             header("Location: {$url}");
             return;
         }
 
-        $project = $this->projectRepository->getProject($id);
+        $project = $this->projectRepository->getProject($projectId);
         $user = $this->userRepository->getUser($_SESSION['email']);
 
         $this->render('project-details', [
@@ -102,9 +102,18 @@ class ProjectController extends AppController {
         ]);
     }
 
-//    public function deleteProject() {
-//
-//    }
+    public function deleteProject($projectId) {
+        if (!$this->sessionController->isSessionSet()) {
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}");
+            return;
+        }
+
+        $this->projectRepository->deleteProject($projectId);
+
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/my-projects");
+    }
 
     private function validate(array $file): bool
     {

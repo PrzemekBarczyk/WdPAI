@@ -108,4 +108,12 @@ class ProjectRepository extends Repository {
             $project->getImage()
         ]);
     }
+
+    public function deleteProject($projectId) {
+        $stmt = $this->database->connect()->prepare('
+            DELETE FROM projects WHERE id = :projectId
+        ');
+        $stmt->bindParam(':projectId', $projectId, PDO::PARAM_INT);
+        $stmt->execute();
+    }
 }

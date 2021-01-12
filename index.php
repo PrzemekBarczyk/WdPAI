@@ -10,12 +10,12 @@ $path = parse_url($path, PHP_URL_PATH); // returns last part of url eg. "all-pro
 Routing::get('', 'DefaultController');
 Routing::get('allProjects', 'ProjectController');
 Routing::get('myProjects', 'ProjectController');
-// TODO: Routing::get('deleteProject', 'ProjectController');
+Routing::get('deleteProject', 'ProjectController');
 Routing::get('projectDetails', 'ProjectController');
 Routing::post('login', 'SecurityController'); // login is form's action name
 Routing::post('register', 'SecurityController'); // same like above
 Routing::post('addProject', 'ProjectController');
-Routing::post('logout', 'SessionController'); // TODO: check if works
+Routing::post('logout', 'SessionController');
 
 // runs proper method in proper controller for given path
 Routing::run($path);
