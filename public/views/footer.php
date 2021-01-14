@@ -1,20 +1,20 @@
 <link rel="stylesheet" type="text/css" href="/public/css/footer-bar.css">
 
-<div id="footer-bar">
+<div id="footer-container">
     <a href="/my-projects">
-        <button id="footer-button-my">
+        <button id="button-my">
             <i class="fas fa-comment-alt"></i>
             Moje ogłoszenia
         </button>
     </a>
     <a href="/add-project">
-        <button id="footer-button-add">
+        <button id="button-add">
             <i class="far fa-plus-square"></i>
             Dodaj ogłoszenie
         </button>
     </a>
-    <a href="">
-        <button id="footer-button-logout">
+    <a href="/logout">
+        <button id="button-logout">
             <i class="fas fa-sign-out-alt"></i>
             Wyloguj
         </button>

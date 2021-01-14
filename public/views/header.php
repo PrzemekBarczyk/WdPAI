@@ -1,13 +1,13 @@
 <link rel="stylesheet" type="text/css" href="/public/css/header-bar.css">
 
-<div id="header">
+<div id="header-container">
     <div id="logo-container">
         <a href="/all-projects">
             <img src="/public/img/logo.PNG">
         </a>
     </div>
-    <div id="search-bar">
-        <input class="input-field" name="search" type="text" placeholder="Wyszukaj...">
+    <div id="search-field">
+        <input name="search" type="text" placeholder="Wyszukaj...">
         <i class="fas fa-search"></i>
     </div>
     <a href="/add-project">
