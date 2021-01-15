@@ -6,7 +6,7 @@
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="/public/css/login-register.css">
     <script src="https://kit.fontawesome.com/d4fac2996f.js" crossorigin="anonymous"></script>
-    <title>Login page</title>
+    <title>Login Page</title>
 </head>
 
 <body>
@@ -14,8 +14,7 @@
         <div id="logo-container">
             <img id="login-logo" src="/public/img/logo.PNG" alt="logo">
         </div>
-
-        <form id="form" action="login" method="post">
+        <form action="login" method="post">
             <div id="form-title-container">
                 <h4 id="form-title">Logowanie</h4>
             </div>

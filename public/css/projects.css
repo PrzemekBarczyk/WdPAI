@@ -1,3 +1,18 @@
+body {
+    height: 100%;
+    margin: 0;
+    background: #DDE7DA 0 0 no-repeat padding-box;
+}
+
+#container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 #content {
     width: 70vw;
     height: auto;
@@ -5,146 +20,147 @@
     padding-right: 15vw;
 	display: flex;
 	flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 }
 
 .project {
     width: 64vw;
-    height: 24vh;
-    margin: 1vh 1vh;
-    padding: 1vh 1vh;
+    height: 23vh;
+    margin: 1vh 1vw 0 1vw;
+    padding: 1vh 1vw 1vh 1vw;
     display: grid;
     grid-template-columns: 30% 40% 30%;
     grid-template-rows: 50% 50%;
-    grid-template-areas: "a b c"
+    grid-template-areas: "a b b"
                          "a d e";
-    background: #FFFFFF 0% 0% no-repeat padding-box;
+    background: #FFFFFF 0 0 no-repeat padding-box;
     border: 1px solid #707070;
 }
 
 .my-project {
-    width: 98%;
-    height: 20vh;
-    padding: 1vh 1%;
+    width: 64vw;
+    height: 23vh;
+    margin: 1vh 1vw 0 1vw;
+    padding: 1vh 1vw 1vh 1vw;
     display: grid;
     grid-template-columns: 30% 40% 30%;
     grid-template-rows: 50% 50%;
     grid-template-areas: "a b c"
                          "a d c";
-    background: #FFFFFF 0% 0% no-repeat padding-box;
+    background: #FFFFFF 0 0 no-repeat padding-box;
     border: 1px solid #707070;
 }
 
 .link-image {
     grid-area: a;
-    width: auto;
+    width: 100%;
     height: 100%;
 }
 
-.project a img, .my-project a img {
-    width: auto;
+.link-image img, .link-image img {
+    width: 100%;
     height: 100%;
     text-align: center;
 }
 
 .name {
     grid-area: b;
-    width: 80%;
-    padding-left: 10%;
+    width: auto;
+    padding-left: 4vw;
 }
 
 .name a {
     text-decoration: none;
     text-align: left;
-    font: normal normal bold 18px Arial;
-    letter-spacing: 0px;
+    font: normal normal bold 2.5vh Arial;
     color: #000000;
 }
 
 .category {
     grid-area: d;
-    width: 80%;
-    padding-left: 10%;
+    width: 20vw;
+    padding-left: 4vw;
     text-align: left;
-    font: normal normal bold 16px Arial;
-    letter-spacing: 0px;
+    font: normal normal bold 2.2vh Arial;
     color: #403737;
 }
 
 .location-and-date {
     grid-area: e;
     text-align: left;
-    font: normal normal normal 16px Arial;
-    letter-spacing: 0px;
+    font: normal normal normal 2.2vh Arial;
     color: #574F4F;
 }
 
 .link-delete {
-    width: 60%;
-    height: 25%;
-    margin: 20% 10% 20% 10%;
     grid-area: c;
+    width: 10vw;
+    height: 6vh;
+    margin: 8vh 5vw 8vh 5vw;
     text-decoration: none;
 }
 
 .delete {
     width: 100%;
-    height: 100%;
-    padding-top: 3%;
-    background: #38055F 0% 0% no-repeat padding-box;
+    height: 50%;
+    padding: 1.5vh 0;
+    background: #38055F 0 0 no-repeat padding-box;
     border: 1px solid #707070;
     border-radius: 29px;
     text-align: center;
-    font: normal normal bold 24px/28px Arial;
-    letter-spacing: 0px;
+    font: normal normal bold 3vh Arial;
     color: #D47C18;
 }
-.delete:hover {
-    .name: color: FFFFFF;
-}
 
-@media only screen and (max-device-width: 420px) {
+@media only screen and (max-device-width: 1024px) {
+
     #content {
-        width: 100%;
-        padding: 0;
+        width: 100vw;
+        height: 80vh;
+        overflow-y: scroll;
     }
 
     .project, .my-project {
-        width: 95%;
+        width: 95vw;
         height: 15vh;
         display: grid;
         grid-template-columns: 40% 60%;
-        grid-template-rows: 64% 35%;
+        grid-template-rows: 75% 25%;
         grid-template-areas: "a b"
                              "c d";
     }
     
     .name {
         grid-area: b;
-        width: 90%;
-        padding-left: 0;
-        font: normal normal bold 35px Arial;
+        width: 95%;
+        padding-left: 5%;
     }
     
     .category {
         grid-area: c;
-        width: 90%;
-        padding-left: 5%;
-        font: normal normal bold 30px Arial;
+        width: 95%;
+        margin: 0;
+        padding: 4% 0 0 5%;
     }
     
     .location-and-date {
         grid-area: d;
-        font: normal normal normal 30px Arial;
+        margin: 0;
+        padding: 4% 0 0 5%;
+    }
+
+    .link-delete {
+        grid-area: d;
+        width: 50%;
+        height: 8vh;
+        padding-left: 30%;
+        margin: 0;
     }
     
     .delete {
-        grid-area: d;
-        width: 40%;
-        height: 50%;
-        padding-top: 2%;
-        margin: 0;
-        font: normal normal normal 30px Arial;
+        height: auto;
+        padding: 5% 0 5% 0;
+        font-size: 2vh;
     }
 }

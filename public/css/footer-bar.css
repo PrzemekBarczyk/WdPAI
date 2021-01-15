@@ -1,4 +1,4 @@
-#footer-bar, #footer-bar * {
+#footer-container, #footer-container * {
     width: 0;
     height: 0;
     padding: 0;
@@ -6,14 +6,14 @@
     opacity: 0;
 }
 
-@media only screen and (max-device-width: 420px) {
-    #footer-bar {
+@media only screen and (max-device-width: 1024px) {
+    #footer-container {
         position: fixed;
         bottom: 0;
         width: 100vw;
         height: 10vh;
         opacity: 1;
-        background: #FFFFFF 0% 0% no-repeat padding-box;
+        background: #FFFFFF 0 0 no-repeat padding-box;
         border-top: 1px solid #707070;
         display: flex;
         flex-direction: row;
@@ -21,20 +21,20 @@
         align-items: center;
     }
 
-    #footer-bar a {
+    #footer-container a {
         width: 25%;
         height: inherit;
         opacity: 1;
         text-decoration: none;
     }
 
-    #footer-button-my, #footer-button-add, #footer-button-logout {
+    #button-my, #button-add, #button-logout {
         width: 100%;
         height: inherit;
         opacity: 1;
         text-align: center;
         font: normal normal bold 30px Arial;
-        letter-spacing: 0px;
+        letter-spacing: 0;
         color: #D47C18;
         background: none;
         border: none;
@@ -44,7 +44,7 @@
         align-items: center;
     }
 
-    #footer-bar button i {
+    #footer-container button i {
         width: auto;
         height: auto;
         color: black;
@@ -52,7 +52,7 @@
         opacity: 1;
     }
 
-    #footer-button-add i {
+    #button-add i {
         color: #38055F!important;
     }
 }
