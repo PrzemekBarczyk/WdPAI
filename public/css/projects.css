@@ -1,6 +1,16 @@
 body {
+    height: 100%;
     margin: 0;
     background: #DDE7DA 0 0 no-repeat padding-box;
+}
+
+#container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 #content {
@@ -10,7 +20,7 @@ body {
     padding-right: 15vw;
 	display: flex;
 	flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -107,7 +117,8 @@ body {
 
     #content {
         width: 100vw;
-        padding: 0;
+        height: 80vh;
+        overflow-y: scroll;
     }
 
     .project, .my-project {
