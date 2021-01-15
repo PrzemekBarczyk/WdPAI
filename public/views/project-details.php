@@ -18,7 +18,7 @@
                 <h5><?= $project->getTitle(); ?></h5>
             </div>
             <div id="image">
-                <img src="public/uploads/<?= $project->getImage(); ?>" alt="zdjęcie">
+                <img src="../public/uploads/<?= $project->getImage(); ?>" alt="zdjęcie">
             </div>
             <div id="phone">
                 <h4>Numer telefonu</h4>
