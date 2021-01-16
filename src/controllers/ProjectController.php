@@ -130,7 +130,7 @@ class ProjectController extends AppController {
         return true;
     }
 
-    public function search() {
+    public function search($option) {
         $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
 
         if ($contentType === "application/json") {
@@ -140,7 +140,10 @@ class ProjectController extends AppController {
             header('Content-type: application/json');
             http_response_code(200);
 
-            echo json_encode($this->projectRepository->getProjectByTitle($decoded['search']));
+            if ($option == "my")
+                echo json_encode($this->projectRepository->getProjectsByTitle($decoded['search'], $_SESSION["id"]));
+            else if ($option == "all")
+                echo json_encode($this->projectRepository->getProjectsByTitle($decoded['search']));
         }
     }
 }

@@ -1,30 +1,41 @@
-const search = document.querySelector('input[placeholder="Wyszukaj..."]');
+const searchField = document.querySelector('input[placeholder="Wyszukaj..."]');
+const searchButton = document.querySelector('.fas');
 const projectContainer = document.querySelector("#content");
 
-search.addEventListener("keyup", function (event) {
+const my = projectContainer.getElementsByClassName("my-project");
+
+searchField.addEventListener("keyup", function (event) {
     if (event.key === "Enter") {
         event.preventDefault();
-
-        const data = {search: this.value};
-
-        fetch("/search", {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        }).then(function (response) {
-            return response.json();
-        }).then(function (projects) {
-            projectContainer.innerHTML = "";
-            loadProjects(projects)
-        });
+        searchProjects();
     }
 });
 
+searchButton.addEventListener("click", searchProjects, false);
+
+function searchProjects() {
+    let option = "all";
+    if (my.length > 0)
+        option = "my";
+
+    const data = {search: searchField.value}
+
+    fetch("/search/"+option, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data),
+    }).then(function (response) {
+        return response.json();
+    }).then(function (projects) {
+        projectContainer.innerHTML = "";
+        loadProjects(projects);
+    });
+}
+
 function loadProjects(projects) {
     projects.forEach(project => {
-        console.log(project); // TODO: delete
         createProject(project);
     })
 }
@@ -34,14 +45,25 @@ function createProject(project) {
 
     const clone = template.content.cloneNode(true);
 
-    const image = clone.querySelector("img");
+    const imageLink = clone.querySelector(".link-image");
+    imageLink.href = `/project-details/${project.id}`;
+    const image = clone.querySelector(".link-image img");
     image.src = `/public/uploads/${project.image}`;
-    const title = clone.querySelector("h3");
+
+    const title = clone.querySelector(".name a");
+    title.href = `/project-details/${project.id}`;
     title.innerHTML = project.title;
-    const description = clone.querySelector(".category");
-    description.innerHTML = project.description;
+
+    const category = clone.querySelector(".category");
+    category.innerHTML = project.category;
+
     const locationAndDate = clone.querySelector(".location-and-date");
-    locationAndDate.innerHTML = project.location + " " + project.date;
+    if (locationAndDate != null)
+        locationAndDate.innerHTML = project.location + " " + project.date;
+
+    const deleteButton = clone.querySelector(".link-delete");
+    if (deleteButton != null)
+        deleteButton.href = `/delete-project/${project.id}`;
 
     projectContainer.appendChild(clone);
 }

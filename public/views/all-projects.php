@@ -16,11 +16,11 @@
         <div id="content">
             <?php foreach ($allProjects as $project): ?>
                 <div class="project">
-                    <a class="link-image" href="project-details/<?= $project->getId(); ?>">
+                    <a class="link-image" href="/project-details/<?= $project->getId(); ?>">
                         <img src="public/uploads/<?= $project->getImage(); ?>" alt="zdjęcie">
                     </a>
                     <h3 class="name">
-                        <a href="project-details/<?= $project->getId(); ?>"><?= $project->getTitle(); ?></a>
+                        <a href="/project-details/<?= $project->getId(); ?>"><?= $project->getTitle(); ?></a>
                     </h3>
                     <h4 class="category"><?= $project->getCategory(); ?></h4>
                     <h4 class="location-and-date"><?= $project->getLocation(); ?>  <?= $project->getDate(); ?></h4>
@@ -35,8 +35,12 @@
 
 <template id="project-template">
     <div class="project">
-        <img src="">
-        <h3 class="name"></h3>
+        <a class="link-image">
+            <img src="" alt="zdjęcie">
+        </a>
+        <h3 class="name">
+            <a></a>
+        </h3>
         <h4 class="category"></h4>
         <h4 class="location-and-date"></h4>
     </div>
