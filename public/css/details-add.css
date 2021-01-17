@@ -185,6 +185,7 @@ body {
     width: 96%;
     height: 20vh;
     padding: 2%;
+    resize: none;
 }
 
 #add-photo {
