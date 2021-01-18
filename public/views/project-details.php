@@ -6,7 +6,7 @@
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="/public/css/details-add.css">
     <script src="https://kit.fontawesome.com/d4fac2996f.js" crossorigin="anonymous"></script>
-    <title>Project details page</title>
+    <title>Project Details Page</title>
 </head>
 
 <body>

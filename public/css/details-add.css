@@ -131,6 +131,7 @@ body {
 #content {
     width: 50vw;
     height: auto;
+    padding-top: 1vh;
 	display: flex;
 	flex-direction: column;
     justify-content: space-around;
