@@ -23,19 +23,21 @@ class UserRepository extends Repository {
             $user['phone'],
             $user['location'],
             $user['password'],
+            $user['permissions'],
             $user['id']
         );
     }
 
     public function addUser(User $user) {
         $stmt = $this->database->connect()->prepare('
-            INSERT INTO users_details (phone, location)
-            VALUES (?, ?)
+            INSERT INTO users_details (phone, location, permissions)
+            VALUES (?, ?, ?)
         ');
 
         $stmt->execute([
             $user->getPhone(),
             $user->getLocation(),
+            $user->getPermissions()
         ]);
 
         $stmt = $this->database->connect()->prepare('

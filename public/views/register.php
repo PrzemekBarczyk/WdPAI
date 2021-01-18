@@ -6,7 +6,7 @@
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="/public/css/login-register.css">
     <link rel="stylesheet" type="text/css" href="/public/css/style.css">
-    <script type="text/javascript" src="./public/js/script.js" defer></script>
+    <script type="text/javascript" src="./public/js/validation.js" defer></script>
     <script src="https://kit.fontawesome.com/d4fac2996f.js" crossorigin="anonymous"></script>
     <title>Register Page</title>
 </head>
@@ -16,7 +16,7 @@
         <div id="logo-container">
             <img id="register-logo" src="/public/img/logo.PNG" alt="logo">
         </div>
-        <form id="form" action="register" method="post">
+        <form id="form" action="register" method="post" onsubmit="return validateRegister()">
             <div id="form-title-container">
                 <h4 id="form-title">Rejestracja</h4>
             </div>

@@ -29,15 +29,34 @@ class ProjectRepository extends Repository {
         );
     }
 
-    public function getProjectByTitle(string $searchString) {
+    public function getProjectsByTitle(string $searchString, int $userId=null) {
         $searchString = '%'.strtolower($searchString).'%';
 
-        $stmt = $this->database->connect()->prepare('
-            SELECT * FROM projects WHERE lower(title) LIKE :search OR LOWER(description) LIKE :search
-        ');
-        $stmt->bindParam(':search', $searchString, PDO::PARAM_STR);
-        $stmt->execute();
+        $stmt = null;
+        if ($userId == null) {
+            $stmt = $this->database->connect()->prepare('
+            SELECT * FROM projects WHERE
+                                         lower(title) LIKE :search OR
+                                         lower(category) LIKE :search OR
+                                         lower(description) LIKE :search
+                                         ORDER BY id DESC
+            ');
+            $stmt->bindParam(':search', $searchString, PDO::PARAM_STR);
+        }
+        else {
+            $stmt = $this->database->connect()->prepare('
+            SELECT * FROM projects WHERE
+                                         id_user = :userId AND (
+                                         lower(title) LIKE :search OR
+                                         lower(category) LIKE :search OR
+                                         lower(description) LIKE :search )
+                                         ORDER BY id DESC
+            ');
+            $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+            $stmt->bindParam(':search', $searchString, PDO::PARAM_STR);
+        }
 
+        $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 

@@ -5,6 +5,8 @@
 <head>
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="/public/css/details-add.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/style.css">
+    <script type="text/javascript" src="./public/js/validation.js" defer></script>
     <script src="https://kit.fontawesome.com/d4fac2996f.js" crossorigin="anonymous"></script>
     <title>Add project page</title>
 </head>
@@ -13,7 +15,7 @@
     <div id="container">
         <?php include('header.php'); ?>
         <div id="content">
-            <form action="add-project" method="POST" ENCTYPE="multipart/form-data">
+            <form action="add-project" method="post" ENCTYPE="multipart/form-data" onsubmit="return validateProject()">
                 <div class="messages">
                     <?php
                     if(isset($messages)){

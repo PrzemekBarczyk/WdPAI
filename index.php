@@ -15,6 +15,7 @@ Routing::get('projectDetails', 'ProjectController');
 Routing::post('login', 'SecurityController'); // login is form's action name
 Routing::post('register', 'SecurityController'); // same like above
 Routing::post('addProject', 'ProjectController');
+Routing::post('search', 'ProjectController');
 Routing::post('logout', 'SessionController');
 
 // runs proper method in proper controller for given path
