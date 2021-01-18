@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="/public/css/projects.css">
     <script type="text/javascript" src="./public/js/search.js" defer></script>
     <script src="https://kit.fontawesome.com/d4fac2996f.js" crossorigin="anonymous"></script>
-    <title>All project page</title>
+    <title>All Project Page</title>
 </head>
 
 <body>

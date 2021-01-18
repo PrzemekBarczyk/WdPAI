@@ -11,7 +11,7 @@ const locationInput = form.querySelector('input[name="location"]')
 const passwordInput = form.querySelector('input[name="password"]')
 
 function validateProject() {
-    if (!isFilled(titleInput) || !isFilled(categoryInput) || !isFilled(descriptionInput) || !isFilled(fileInput)) {
+    if (!isFilled(titleInput.value) || !isFilled(categoryInput.value) || !isFilled(descriptionInput.value) || !isFilled(fileInput.value)) {
         alert("Uzupełnij wszystkie pola formularza i dodaj zdjęcie");
         return false;
     }
@@ -19,19 +19,19 @@ function validateProject() {
 }
 
 function validateRegister() {
-    if (!isEmail(emailInput)) {
+    if (!isEmail(emailInput.value)) {
         alert("Niepoprawny format emaila");
         return false;
     }
-    if (!isPhone(phoneInput)) {
+    if (!isPhone(phoneInput.value)) {
         alert("Niepoprawny numer telefonu: podaj numer w formie 9 cyfrowego ciągu");
         return false;
     }
-    if (!isFilled(locationInput)) {
+    if (!isFilled(locationInput.value)) {
         alert("Podaj lokalizację");
         return false;
     }
-    if(!isFilled(passwordInput)) {
+    if(!isFilled(passwordInput.value)) {
         alert("Podaj hasło");
         return false;
     }

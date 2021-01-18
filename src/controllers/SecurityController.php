@@ -33,15 +33,11 @@ class SecurityController extends AppController {
         $user = $this->userRepository->getUser($email);
 
         if (!$user) {
-            $this->render('login', ['messages' => ['Użytkownik nie istnieje!']]);
-            return;
-        }
-        else if ($user->getEmail() !== $email) {
-            $this->render('login', ['messages' => ['Użytkownik o podanym adresie email nie istnieje!']]);
+            $this->render('login', ['messages' => ['Użytkownik o podanym adresie email nie istnieje']]);
             return;
         }
         else if ($user->getPassword() !== $password) {
-            $this->render('login', ['messages' => ['Błędne hasło!']]);
+            $this->render('login', ['messages' => ['Błędne hasło']]);
             return;
         }
 
@@ -57,6 +53,11 @@ class SecurityController extends AppController {
             return;
         }
 
+        if ($this->userRepository->getUser($_POST['email'])) {
+            $this->render('register', ['messages' => ['Podany adres email jest zajęty']]);
+            return;
+        }
+
         $email = $_POST['email'];
         $phone = $_POST['phone'];
         $location = $_POST['location'];
@@ -66,7 +67,7 @@ class SecurityController extends AppController {
 
         $this->userRepository->addUser($user);
 
-        $this->sessionController->logout();
+        $this->sessionController->clear();
 
         $this->render('login', ['messages' => ['Założono konto']]);
     }

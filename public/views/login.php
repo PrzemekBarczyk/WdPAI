@@ -18,13 +18,15 @@
             <div id="form-title-container">
                 <h4 id="form-title">Logowanie</h4>
             </div>
-            <?php
-            if(isset($messages)){
-                foreach($messages as $message) {
-                    echo "<span style=color:red;font-size:25px;>".$message."</span>";;
+            <div class="messages">
+                <?php
+                if(isset($messages)){
+                    foreach($messages as $message) {
+                        echo $message;
+                    }
                 }
-            }
-            ?>
+                ?>
+            </div>
             <h5 class="field-title">Email</h5>
             <div class="form-field">
                 <i class="fas fa-envelope"></i>

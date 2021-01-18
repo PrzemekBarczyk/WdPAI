@@ -25,6 +25,10 @@ class SessionController
         $_SESSION["email"] = $userEmail;
     }
 
+    public function clear() {
+        session_unset();
+    }
+
     public function logout() {
         session_unset();
         $url = "http://$_SERVER[HTTP_HOST]";
