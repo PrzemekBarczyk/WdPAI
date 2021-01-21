@@ -94,7 +94,7 @@ class ProjectController extends AppController {
         }
 
         $project = $this->projectRepository->getProject($projectId);
-        $user = $this->userRepository->getUser($_SESSION['email']);
+        $user = $this->userRepository->getUserById($project->getUserId());
 
         $this->render('project-details', [
             'project' => $project,
